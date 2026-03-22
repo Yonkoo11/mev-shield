@@ -100,7 +100,7 @@ export default function Home() {
           </div>
 
           {/* Stats bar */}
-          <div className="w-full max-w-3xl grid grid-cols-4 gap-4">
+          <div className="w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((s, i) => (
               <div key={i} className="text-center">
                 <div className="text-2xl font-bold text-shield-accent">{s.value}</div>
@@ -114,31 +114,23 @@ export default function Home() {
           {/* Flow diagram */}
           <div className="w-full max-w-3xl bg-shield-card border border-shield-border rounded-xl p-6">
             <h3 className="text-sm font-semibold mb-4 text-center">Batch Auction Flow</h3>
-            <div className="flex items-center justify-between text-xs">
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-shield-accent/20 flex items-center justify-center text-shield-accent font-bold">1</div>
-                <span className="text-shield-muted">Deposit</span>
-              </div>
-              <div className="h-px flex-1 bg-shield-border mx-2" />
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-shield-accent/20 flex items-center justify-center text-shield-accent font-bold">2</div>
-                <span className="text-shield-muted">Submit Order</span>
-              </div>
-              <div className="h-px flex-1 bg-shield-border mx-2" />
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-shield-accent/20 flex items-center justify-center text-shield-accent font-bold">3</div>
-                <span className="text-shield-muted">Batch Closes</span>
-              </div>
-              <div className="h-px flex-1 bg-shield-border mx-2" />
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-shield-accent/20 flex items-center justify-center text-shield-accent font-bold">4</div>
-                <span className="text-shield-muted">Clearing Price</span>
-              </div>
-              <div className="h-px flex-1 bg-shield-border mx-2" />
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-shield-accent/20 flex items-center justify-center text-shield-accent font-bold">5</div>
-                <span className="text-shield-muted">Settlement</span>
-              </div>
+            <div className="grid grid-cols-5 gap-2 md:gap-4 text-xs">
+              {[
+                { n: "1", label: "Deposit" },
+                { n: "2", label: "Submit Order" },
+                { n: "3", label: "Batch Closes" },
+                { n: "4", label: "Clearing Price" },
+                { n: "5", label: "Settlement" },
+              ].map((step, i) => (
+                <div key={i} className="flex flex-col items-center gap-2">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-shield-accent/20 flex items-center justify-center text-shield-accent font-bold text-sm">
+                    {step.n}
+                  </div>
+                  <span className="text-shield-muted text-center text-[10px] md:text-xs leading-tight">
+                    {step.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -6,3 +6,6 @@ test-ledger/
 .env
 .env.local
 *.so
+
+# Local Netlify folder
+.netlify
